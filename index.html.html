@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>신뢰형 대출상담 랜딩페이지</title>
+  <meta name="description" content="신뢰형 대출상담 랜딩페이지 예시 템플릿" />
+  <style>
+    :root{
+      --bg:#f5f7fb;
+      --card:#ffffff;
+      --line:#e6ebf2;
+      --text:#121826;
+      --sub:#5b6474;
+      --primary:#1046c8;
+      --primary-dark:#0b358f;
+      --ok:#0f9d58;
+      --warn:#e67e22;
+      --shadow:0 10px 30px rgba(16,70,200,0.08);
+      --radius:20px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",Arial,sans-serif;
+      background:linear-gradient(180deg,#f8fbff 0%, #f3f6fb 100%);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    .topbar{
+      background:#0f172a;color:#fff;font-size:14px
+    }
+    .topbar .inner{
+      display:flex;gap:16px;justify-content:space-between;align-items:center;
+      padding:10px 0;
+    }
+    .muted{color:#cbd5e1}
+    header{
+      position:sticky;top:0;z-index:30;
+      backdrop-filter: blur(10px);
+      background:rgba(255,255,255,0.84);
+      border-bottom:1px solid rgba(230,235,242,0.8);
+    }
+    nav{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:16px 0;
+    }
+    .logo{
+      display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;
+    }
+    .logo-badge{
+      width:38px;height:38px;border-radius:12px;background:var(--primary);
+      display:grid;place-items:center;color:#fff;font-weight:800;box-shadow:var(--shadow)
+    }
+    .menu{
+      display:flex;gap:22px;font-size:15px;color:#374151
+    }
+    .nav-cta{
+      display:flex;gap:10px;align-items:center
+    }
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:48px;padding:0 18px;border-radius:14px;border:1px solid transparent;
+      font-weight:700;cursor:pointer;transition:.18s ease;
+    }
+    .btn-primary{background:var(--primary);color:#fff;box-shadow:var(--shadow)}
+    .btn-primary:hover{background:var(--primary-dark)}
+    .btn-ghost{background:#fff;border-color:var(--line);color:#1f2937}
+    .hero{padding:54px 0 34px}
+    .hero-grid{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:stretch;
+    }
+    .hero-card,.panel,.notice-card,.feature,.step,.faq-item,.info-box{
+      background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)
+    }
+    .hero-card{padding:34px}
+    .eyebrow{
+      display:inline-flex;gap:8px;align-items:center;
+      padding:8px 12px;border-radius:999px;background:#eef4ff;color:var(--primary);
+      font-size:13px;font-weight:700;
+    }
+    h1{
+      margin:16px 0 14px;font-size:46px;line-height:1.16;letter-spacing:-0.03em
+    }
+    .lead{font-size:18px;color:var(--sub);max-width:680px}
+    .hero-points{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0 26px
+    }
+    .mini{
+      padding:16px;border:1px solid var(--line);border-radius:16px;background:#fbfdff
+    }
+    .mini b{display:block;font-size:18px;margin-bottom:6px}
+    .mini span{color:var(--sub);font-size:14px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .small-note{margin-top:16px;font-size:13px;color:#6b7280}
+    .panel{padding:24px}
+    .panel h3{margin:0 0 14px;font-size:24px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field.full{grid-column:1/-1}
+    label{font-size:14px;font-weight:700;color:#374151}
+    input,select,textarea{
+      width:100%;padding:14px 14px;border-radius:14px;border:1px solid #d7deea;
+      background:#fff;font-size:15px;outline:none;
+    }
+    input:focus,select:focus,textarea:focus{border-color:#8ab1ff;box-shadow:0 0 0 4px rgba(16,70,200,0.10)}
+    textarea{min-height:100px;resize:vertical}
+    .consent{
+      display:flex;gap:10px;align-items:flex-start;margin:14px 0 16px;
+      font-size:13px;color:#5b6474
+    }
+    .consent input{width:18px;height:18px;margin-top:2px}
+    section{padding:34px 0}
+    .section-title{font-size:34px;line-height:1.2;letter-spacing:-0.03em;margin:0 0 10px}
+    .section-sub{color:var(--sub);margin:0 0 20px;font-size:17px}
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .feature{padding:22px}
+    .feature h4{margin:0 0 10px;font-size:22px}
+    .feature p{margin:0;color:var(--sub)}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .step{padding:22px}
+    .num{
+      width:36px;height:36px;border-radius:12px;background:#eef4ff;color:var(--primary);
+      display:grid;place-items:center;font-weight:800;margin-bottom:12px
+    }
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .notice-card{padding:24px}
+    .notice-card h4{margin:0 0 12px;font-size:22px}
+    .notice-card ul{margin:0;padding-left:18px;color:var(--sub)}
+    .notice-card li{margin:8px 0}
+    .faq-list{display:grid;gap:14px}
+    .faq-item{padding:18px 20px}
+    .faq-item h4{margin:0 0 6px;font-size:18px}
+    .faq-item p{margin:0;color:var(--sub)}
+    .cta-band{
+      margin-top:18px;
+      padding:26px;border-radius:24px;
+      background:linear-gradient(135deg,#0f3fb2,#1b5cff);
+      color:#fff;display:flex;justify-content:space-between;gap:18px;align-items:center;
+      box-shadow:var(--shadow)
+    }
+    .cta-band p{margin:8px 0 0;color:#dbe7ff}
+    footer{
+      background:#0f172a;color:#d1d5db;margin-top:34px;padding:36px 0 54px
+    }
+    .footer-grid{
+      display:grid;grid-template-columns:2fr 1fr 1fr;gap:20px
+    }
+    .footer-title{color:#fff;font-weight:800;margin-bottom:10px}
+    .footer-links{display:grid;gap:8px}
+    .legal{
+      margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);
+      font-size:13px;color:#9ca3af
+    }
+    .sticky-cta{
+      position:fixed;left:0;right:0;bottom:0;z-index:40;
+      background:rgba(255,255,255,.95);backdrop-filter: blur(10px);
+      border-top:1px solid var(--line);padding:10px 16px;display:none;
+    }
+    .sticky-inner{max-width:var(--max);margin:0 auto;display:flex;gap:10px}
+    .sticky-inner .btn{flex:1}
+    .result{
+      margin-top:14px;padding:14px;border-radius:14px;background:#f8fbff;border:1px solid #d8e5ff;
+      font-size:14px;display:none
+    }
+    .info-box{padding:18px}
+    @media (max-width:1024px){
+      .hero-grid,.split,.footer-grid{grid-template-columns:1fr}
+      .feature-grid{grid-template-columns:1fr 1fr}
+      .steps{grid-template-columns:1fr 1fr}
+      h1{font-size:38px}
+    }
+    @media (max-width:720px){
+      .menu,.nav-cta .btn-ghost{display:none}
+      .hero-points,.feature-grid,.steps,.form-grid{grid-template-columns:1fr}
+      h1{font-size:32px}
+      .hero{padding-top:28px}
+      .sticky-cta{display:block}
+      body{padding-bottom:78px}
+      .topbar .inner{flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container inner">
+      <div>정확한 안내 · 과장 없는 상담 · 필수 고지 우선</div>
+      <div class="muted">카카오톡 오픈채팅 상담 / 빠른 확인 · 빠른 안내</div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a class="logo" href="#">
+          <span class="logo-badge">희</span>
+          <span>희망론</span>
+        </a>
+        <div class="menu">
+          <a href="#features">서비스 특징</a>
+          <a href="#process">진행 절차</a>
+          <a href="#notice">필수 안내</a>
+          <a href="#faq">자주 묻는 질문</a>
+        </div>
+        <div class="nav-cta">
+          <a class="btn btn-ghost" href="https://open.kakao.com/o/sfaOiwqi" target="_blank" rel="noopener">카톡 상담</a>
+          <a class="btn btn-primary" href="https://open.kakao.com/o/sfaOiwqi" target="_blank" rel="noopener">카톡으로 신청하기</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <span class="eyebrow">희망론 · 카카오톡 빠른 상담</span>
+          <h1>무직자, 저신용자, 학생, 군인까지<br>남녀노소 상관없이 상담 가능합니다</h1>
+          <p class="lead">
+            복잡한 절차 없이 간단한 정보로 빠르게 확인해드리겠습니다. 신청해주시면 빠르게 상담 도와드리겠습니다.
+          </p>
+          <div class="hero-points">
+            <div class="mini"><b>빠른 상담</b><span>카카오톡 오픈채팅으로 바로 연결</span></div>
+            <div class="mini"><b>간편 접수</b><span>복잡한 절차 없이 필요한 내용만 확인</span></div>
+            <div class="mini"><b>폭넓은 상담</b><span>상황에 맞는 방향을 빠르게 안내</span></div>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://open.kakao.com/o/sfaOiwqi" target="_blank" rel="noopener">카톡으로 신청하기</a>
+            <a class="btn btn-ghost" href="#process">상담 절차 보기</a>
+          </div>
+          <div class="small-note">
+            상담 내용은 개인 상황에 따라 달라질 수 있으며, 카카오톡으로 순차 안내됩니다.
+          </div>
+        </div>
+
+        <div class="panel" id="apply">
+          <h3>카카오톡 상담 안내</h3>
+          <form id="loanForm">
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">이름</label>
+                <input id="name" type="text" placeholder="홍길동" required />
+              </div>
+              <div class="field">
+                <label for="phone">연락처</label>
+                <input id="phone" type="tel" placeholder="010-0000-0000" required />
+              </div>
+              <div class="field">
+                <label for="job">직업 형태</label>
+                <select id="job" required>
+                  <option value="">선택하세요</option>
+                  <option>직장인</option>
+                  <option>사업자</option>
+                  <option>프리랜서</option>
+                  <option>주부</option>
+                  <option>기타</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="purpose">상담 목적</label>
+                <select id="purpose" required>
+                  <option value="">선택하세요</option>
+                  <option>생활자금</option>
+                  <option>대환 상담</option>
+                  <option>사업 운영자금</option>
+                  <option>기존 조건 비교</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="memo">메모</label>
+                <textarea id="memo" placeholder="상담 시 참고할 내용을 적어주세요."></textarea>
+              </div>
+            </div>
+
+            <label class="consent">
+              <input id="agree" type="checkbox" required />
+              <span>개인정보 수집·이용에 동의합니다. 실제 서비스 운영 시에는 별도 약관 링크와 처리방침 전문을 반드시 연결해야 합니다.</span>
+            </label>
+
+            <button class="btn btn-primary" type="submit" style="width:100%;">카톡 상담 링크 확인하기</button>
+            <div id="result" class="result"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container">
+        <h2 class="section-title">희망론 상담 특징</h2>
+        <p class="section-sub">카카오톡 오픈채팅으로 빠르게 연결하고, 필요한 내용부터 확인합니다.</p>
+        <div class="feature-grid">
+          <article class="feature">
+            <h4>1. 빠른 카톡 연결</h4>
+            <p>버튼을 누르면 카카오톡 오픈채팅으로 바로 연결되어 상담을 시작할 수 있습니다.</p>
+          </article>
+          <article class="feature">
+            <h4>2. 다양한 상황 상담</h4>
+            <p>무직자, 저신용자, 학생, 군인 등 여러 상황에 맞춰 필요한 내용을 먼저 확인합니다.</p>
+          </article>
+          <article class="feature">
+            <h4>3. 간단한 진행 방식</h4>
+            <p>오픈채팅 접속 → 기본 상황 확인 → 상담 안내 순서로 간단하게 진행됩니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <h2 class="section-title">진행 절차</h2>
+        <p class="section-sub">단순하고 예측 가능한 흐름이 신뢰를 만든다.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="num">01</div>
+            <h4>상담 접수</h4>
+            <p>카카오톡 오픈채팅 링크를 눌러 상담창으로 들어갑니다.</p>
+          </div>
+          <div class="step">
+            <div class="num">02</div>
+            <h4>기초 확인</h4>
+            <p>현재 상황과 필요한 내용을 간단히 확인합니다.</p>
+          </div>
+          <div class="step">
+            <div class="num">03</div>
+            <h4>조건 안내</h4>
+            <p>상담 가능한 방향과 확인할 부분을 안내해드립니다.</p>
+          </div>
+          <div class="step">
+            <div class="num">04</div>
+            <h4>진행 여부 결정</h4>
+            <p>안내 내용을 확인한 뒤 진행 여부를 결정합니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="notice">
+      <div class="container">
+        <h2 class="section-title">상담 전 확인사항</h2>
+        <p class="section-sub">상담 전 반드시 확인해야 할 내용을 정리했습니다.</p>
+        <div class="split">
+          <div class="notice-card">
+            <h4>운영 시 실제로 정리해야 하는 항목</h4>
+            <ul>
+              <li>상호 / 대표자명 / 사업자등록번호 / 등록기관 / 등록번호</li>
+              <li>소재지 / 대표 연락처 / 운영시간</li>
+              <li>연 이자율 범위 / 연체 시 적용 기준 / 상환 방식</li>
+              <li>중개수수료 유무 및 부대비용 설명</li>
+              <li>개인정보처리방침 / 이용약관 / 수집 항목 / 보관 기간</li>
+            </ul>
+          </div>
+          <div class="notice-card">
+            <h4>신뢰를 떨어뜨리는 요소</h4>
+            <ul>
+              <li>허위 승인율, 가짜 후기, 조작된 실시간 신청 건수</li>
+              <li>근거 없는 “무조건 승인”, “100% 가능” 문구</li>
+              <li>가짜 공공기관 마크, 허위 제휴 로고</li>
+              <li>사실이 아닌 최저금리·최대한도 표시</li>
+              <li>동의 없이 개인정보를 수집하는 숨은 스크립트</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cta-band">
+          <div>
+            <h3 style="margin:0;font-size:28px;">희망론 카톡 상담</h3>
+            <p>신청해주시면 빠르게 상담 도와드리겠습니다.</p>
+          </div>
+          <a class="btn btn-ghost" href="#faq" style="background:#fff;color:#0f3fb2;border:none;">FAQ 보기</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container split">
+        <div class="info-box">
+          <h3 style="margin-top:0">상담 방식 요약</h3>
+          <p style="color:var(--sub)">상단 안내 → 핵심 문구 → 카카오톡 연결 → 진행 절차 → 확인사항 → FAQ 순서로 구성했습니다.</p>
+        </div>
+        <div class="info-box">
+          <h3 style="margin-top:0">바로 사용하는 방법</h3>
+          <p style="color:var(--sub)">파일을 저장한 뒤 브라우저로 열고, 버튼을 누르면 카카오톡 오픈채팅으로 바로 이동합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <h2 class="section-title">자주 묻는 질문</h2>
+        <p class="section-sub">카카오톡 상담 전에 많이 묻는 내용을 정리했습니다.</p>
+        <div class="faq-list">
+          <div class="faq-item">
+            <h4>Q. 상담은 어떻게 진행되나요?</h4>
+            <p>A. 카카오톡 오픈채팅 링크로 접속한 뒤 기본 상황을 확인하고 상담을 진행합니다.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Q. 지금 바로 상담할 수 있나요?</h4>
+            <p>A. 네. 버튼을 누르면 오픈채팅으로 연결되며, 순차적으로 빠르게 안내해드립니다.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Q. 어떤 분들이 상담 가능한가요?</h4>
+            <p>A. 무직자, 저신용자, 학생, 군인 등 다양한 상황에서 상담 가능합니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-title">희망론</div>
+          <div>카카오톡 오픈채팅 상담 랜딩페이지</div>
+          <div class="legal">
+            본 파일은 디자인 예시다. 실제 금융/대부/중개 서비스 운영 시 관련 법령, 등록 요건, 필수 고지, 개인정보 처리 의무를 사실대로 반영해야 한다.
+          </div>
+        </div>
+        <div>
+          <div class="footer-title">바로가기</div>
+          <div class="footer-links">
+            <a href="#features">서비스 특징</a>
+            <a href="#process">진행 절차</a>
+            <a href="#notice">필수 안내</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-title">문의</div>
+          <div class="footer-links">
+            <a href="https://open.kakao.com/o/sfaOiwqi" target="_blank" rel="noopener">카카오톡 오픈채팅</a>
+            <a href="https://open.kakao.com/o/sfaOiwqi" target="_blank" rel="noopener">https://open.kakao.com/o/sfaOiwqi</a>
+            <a href="#">개인정보처리방침</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="sticky-cta">
+    <div class="sticky-inner">
+      <a class="btn btn-ghost" href="https://open.kakao.com/o/sfaOiwqi" target="_blank" rel="noopener">카톡 상담</a>
+      <a class="btn btn-primary" href="https://open.kakao.com/o/sfaOiwqi" target="_blank" rel="noopener">카톡으로 신청하기</a>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('loanForm');
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const data = {
+        name: document.getElementById('name').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        job: document.getElementById('job').value,
+        purpose: document.getElementById('purpose').value,
+        memo: document.getElementById('memo').value.trim(),
+        agree: document.getElementById('agree').checked
+      };
+
+      if(!data.name || !data.phone || !data.job || !data.purpose || !data.agree){
+        result.style.display = 'block';
+        result.textContent = '필수 항목을 확인하세요.';
+        return;
+      }
+
+      result.style.display = 'block';
+      result.innerHTML = `
+        <b>입력 확인 완료</b><br>
+        카카오톡 상담 링크로 이동해 빠르게 상담을 이어가세요.<br>
+        <a href="https://open.kakao.com/o/sfaOiwqi" target="_blank" rel="noopener">카카오톡 오픈채팅 바로가기</a>
+      `;
+
+      window.open('https://open.kakao.com/o/sfaOiwqi', '_blank');
+      form.reset();
+    });
+
+    function escapeHtml(str){
+      return str.replace(/[&<>"']/g, function(m){
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]);
+      });
+    }
+  </script>
+</body>
+</html>
